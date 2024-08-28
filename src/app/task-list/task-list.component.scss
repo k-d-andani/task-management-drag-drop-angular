@@ -1,0 +1,121 @@
+:host {
+
+  height: 100%;
+  padding: 1rem;
+
+  .sub-header {
+    display: flex;
+    justify-content: end;
+    padding: 1rem;
+
+    .add-task-button {
+      background-color: #0a305f;
+      color: #aac7ff;
+      font-size: 18px;
+      height: 3rem;
+    }
+  }
+
+  .container {
+    width: 400px;
+    max-width: 100%;
+    margin: 0 20px 20px 20px;
+    display: inline-block;
+    vertical-align: top;
+    height: 100%;
+  }
+
+  .list {
+    width: 100%;
+    border: solid 1px #ccc;
+    min-height: 60px;
+    background: white;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    overflow: hidden;
+    padding: 1rem;
+
+    .to-do {
+
+      border-color: #0a305f;
+
+      .header {
+        background-color: #0a305f;
+        color: #aac7ff;
+        padding: 1rem;
+      }
+    }
+
+    .in-progress {
+
+      border-color: #3a3000;
+
+      .header {
+        background-color: #3a3000;
+        color: #dbc66e;
+        padding: 1rem;
+      }
+    }
+
+    .completed {
+
+      border-color: #003735;
+
+      .header {
+        background-color: #003735;
+        color: #a9d0b3;
+        padding: 1rem;
+      }
+    }
+
+    .task-details {
+      padding: 1rem;
+    }
+
+    .task-actions {
+      display: flex;
+      gap: 1rem;
+
+      .delete-button {
+        background-color: #690005;
+        color: #ffb4ab;
+      }
+    }
+  }
+
+  .list-item {
+    border-bottom: solid 1px #ccc;
+    box-sizing: border-box;
+    cursor: move;
+    background: white;
+    color: black;
+  }
+
+  .list-item:last-child {
+    border: none;
+  }
+}
+
+/* Highlight the list item that is being dragged. */
+.cdk-drag-preview {
+  border-radius: 4px;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+    0 8px 10px 1px rgba(0, 0, 0, 0.14),
+    0 3px 14px 2px rgba(0, 0, 0, 0.12);
+}
+
+/* Animate items as they're being sorted. */
+.cdk-drop-list-dragging .cdk-drag {
+  transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* Animate an item that has been dropped. */
+.cdk-drag-animating {
+  transition: transform 300ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cdk-drag-placeholder {
+  opacity: 0;
+}

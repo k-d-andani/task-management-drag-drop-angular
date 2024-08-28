@@ -1,0 +1,77 @@
+<!-- Title -->
+<h2 mat-dialog-title>
+  {{ data.isCreateMode ? 'Add task' : 'Edit task' }}
+</h2>
+<!-- Title -->
+
+<mat-dialog-content>
+
+  <form [formGroup]="addEditTaskForm">
+
+    <div class="add-edit-form">
+
+      <!-- Title field  -->
+      <mat-form-field>
+
+        <mat-label>Title</mat-label>
+
+        <input matInput
+               formControlName="title">
+
+      </mat-form-field>
+      <!-- Title field  -->
+
+      <!-- Details field  -->
+      <mat-form-field>
+
+        <mat-label>Details</mat-label>
+
+        <textarea matInput
+                  formControlName="details">
+        </textarea>
+
+      </mat-form-field>
+      <!-- Details field  -->
+
+      <!-- Status field  -->
+      <mat-form-field>
+
+        <mat-label>Select</mat-label>
+
+        <mat-select formControlName="status">
+
+          <mat-option *ngFor="let item of TASK_STATUS_MAP | keyvalue"
+                      [value]="item.key">
+            {{item.value}}
+          </mat-option>
+
+        </mat-select>
+
+      </mat-form-field>
+      <!-- Status field  -->
+
+    </div>
+
+  </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+  <!-- Add or Edit task button -->
+  <button mat-flat-button
+          color="primary"
+          (click)="addEditTask()">
+    {{ data.isCreateMode ? 'Create' : 'Edit' }}
+  </button>
+  <!-- Add or Edit task button -->
+
+  <!-- Cancel button -->
+  <button mat-button
+          mat-dialog-close
+          cdkFocusInitial>
+    Cancel
+  </button>
+  <!-- Cancel button -->
+
+</mat-dialog-actions>

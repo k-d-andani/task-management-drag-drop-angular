@@ -1,0 +1,175 @@
+<div class="sub-header">
+
+  <!-- Add task button -->
+  <button class="add-task-button"
+          mat-button
+          (click)="addTask()">
+    Add task
+  </button>
+  <!-- Add task button -->
+
+</div>
+
+@if(!isLoading) {
+
+<div cdkDropListGroup>
+
+  <!-- ToDo tasks -->
+  <div class="container">
+    <h2>To do</h2>
+
+    <div cdkDropList
+         class="list"
+         #todoList="cdkDropList"
+         [cdkDropListData]="todoTasks"
+         (cdkDropListDropped)="drop($event)">
+
+      @for (toDoTask of todoTasks; track toDoTask.id) {
+
+      <mat-card class="to-do"
+                appearance="outlined"
+                cdkDrag>
+
+        <mat-card-header class="header">
+          <mat-card-title>{{ toDoTask.title }}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="task-details">
+          {{ toDoTask.details }}
+        </mat-card-content>
+
+        <mat-card-actions class="task-actions">
+
+          <button mat-mini-fab
+                  class="edit-button"
+                  (click)="editTask(toDoTask)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-mini-fab
+                  class="delete-button"
+                  (click)="deleteTask(toDoTask)">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </mat-card-actions>
+
+      </mat-card>
+      }
+
+    </div>
+
+  </div>
+  <!-- ToDo tasks -->
+
+  <!-- Inprogress tasks -->
+  <div class="container">
+    <h2>In progress</h2>
+
+    <div cdkDropList
+         class="list"
+         #inProgressList="cdkDropList"
+         [cdkDropListData]="inProgressTasks"
+         (cdkDropListDropped)="drop($event)">
+
+      @for (inProgressTask of inProgressTasks; track inProgressTask.id) {
+
+      <mat-card class="in-progress"
+                appearance="outlined"
+                cdkDrag>
+
+        <mat-card-header class="header">
+          <mat-card-title>{{ inProgressTask.title }}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="task-details">
+          {{ inProgressTask.details }}
+        </mat-card-content>
+
+        <mat-card-actions class="task-actions">
+
+          <button mat-mini-fab
+                  class="edit-button"
+                  (click)="editTask(inProgressTask)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-mini-fab
+                  class="delete-button"
+                  (click)="deleteTask(inProgressTask)">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </mat-card-actions>
+
+      </mat-card>
+
+      }
+
+    </div>
+
+  </div>
+  <!-- Inprogress tasks -->
+
+  <!-- Completed tasks -->
+  <div class="container">
+    <h2>Done</h2>
+
+    <div cdkDropList
+         class="list"
+         #doneList="cdkDropList"
+         [cdkDropListData]="completedTasks"
+         (cdkDropListDropped)="drop($event)">
+
+      @for (completedTask of completedTasks; track completedTask.id) {
+
+      <mat-card class="completed"
+                appearance="outlined"
+                cdkDrag>
+
+        <mat-card-header class="header">
+          <mat-card-title>{{ completedTask.title }}</mat-card-title>
+        </mat-card-header>
+
+        <mat-card-content class="task-details">
+          {{ completedTask.details }}
+        </mat-card-content>
+
+        <mat-card-actions class="task-actions">
+
+          <button mat-mini-fab
+                  class="edit-button"
+                  (click)="editTask(completedTask)">
+            <mat-icon>edit</mat-icon>
+          </button>
+
+          <button mat-mini-fab
+                  class="delete-button"
+                  (click)="deleteTask(completedTask)">
+            <mat-icon>delete</mat-icon>
+          </button>
+
+        </mat-card-actions>
+
+      </mat-card>
+
+      }
+
+    </div>
+
+  </div>
+  <!-- Inprogress tasks -->
+
+</div>
+
+} @else {
+
+<!-- Skeleton loader -->
+<div>
+  <ngx-skeleton-loader /><ngx-skeleton-loader count="5"
+                       animation="pulse"
+                       [theme]="skeletonConfig" />
+</div>
+<!-- Skeleton loader -->
+
+}
