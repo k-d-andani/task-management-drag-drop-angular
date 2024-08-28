@@ -1,5 +1,11 @@
 # TaskManagerAngular
 
+Task management Application
+
+Add, edit or Delete Task
+
+Drag n Drop Task with three statuses Todo, In progress and Completed
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.8.
 
 ## Development server
